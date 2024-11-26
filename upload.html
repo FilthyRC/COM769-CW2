@@ -6,6 +6,51 @@
     <title>Upload</title>
 </head>
 <body>
-    
+    <div>
+        <a href="index.html">Home</a>
+        <a href="upload.html">Upload</a>
+    </div>
+
+    <!--New Asset Box-->
+    <div class="row align-items-start">
+        <div class="col-2"  ></div>
+
+        <div class="col-8" style="text-align: left;border-bottom:1px solid #222222;">
+          <h2>Upload Video</h2>
+
+          <form style="font-size: 10pt;" id="newAssetForm">
+            <div class="mb-3">
+              <label for="videoName" class="form-label">Video Name</label>
+              <input type="text" class="form-control" id="videoName">
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="userID" class="form-label">User ID</label>
+              <input type="string" class="form-control" id="userID">
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="UpVideo" class="form-label">Video to Upload</label>
+              <input type="file" class="form-control" id="UpVideo">
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="UpIcon" class="form-label">Icon to Upload</label>
+              <input type="file" class="form-control" id="UpIcon">
+            </div>
+            <br>
+            <button type="button" id="uploadForm" onclick="UploadVideo()">Submit</button> <br/><br/>
+ 
+          </form>
+        </div>
+
+        <div class="col-2"  ></div>
+    </div>
+
+
+    <script type="text/javascript" src="JS/bootstrap.js"></script>
+    <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="JS/app.js"></script>
 </body>
 </html>
