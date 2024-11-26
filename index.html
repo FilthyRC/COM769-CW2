@@ -4,75 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myflix</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #141414;
-            color: #fff;
-        }
-        .header {
-            background-color: #e50914;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #333;
-            padding: 10px 0;
-        }
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-        .nav a:hover {
-            background-color: #e50914;
-        }
-        .container {
-            padding: 20px;
-        }
-        .movie {
-            display: inline-block;
-            width: 30%;
-            margin: 1%;
-            background-color: #222;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .movie img {
-            width: 100%;
-            border-radius: 5px;
-        }
-    </style>
+
+    <script type="text/javascript" src="JS/bootstrap.js"></script>
+    <script type="text/javascript" src="JS/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="JS/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="JS/app.js"></script>
 </head>
 <body>
-    <script src= "app.js"></script>
-    <div class="header">
-        <h1>Home</h1>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="upload.html">Upload</a>
     </div>
-    <div class="container">
-        <div class="movie">
-            <img src="https://via.placeholder.com/150" alt="Movie 1">
-            <h2><a href="video1.html">Movie 1</a></h2>
-            <p>Description of movie 1</p>
-        </div>
-        <div class="movie">
-            <img src="https://via.placeholder.com/150" alt="Movie 2">
-            <h2>Movie 2</h2>
-            <p>Description of movie 2</p>
-        </div>
-        <div class="movie">
-            <img src="https://via.placeholder.com/150" alt="Movie 3">
-            <h2>Movie 3</h2>
-            <p>Description of movie 3</p>
-        </div>
-    </div>
-    <button type="button" id="subNewForm" class="btn btn-primary">Submit</button>
+
+    <div id="MovieIcon"></div>
+
 </body>
 </html>
