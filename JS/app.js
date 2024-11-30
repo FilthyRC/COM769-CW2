@@ -45,7 +45,8 @@ $('#MovieIcon').html('<div class="spinner-border" role="status"><span class="sr-
       processData: false,
       type: 'POST',
       success: function(data){
-
+        alert("Upload Complete!");
     }
   })
+
   };
