@@ -4,26 +4,29 @@ RAI = "https://prod-25.uksouth.logic.azure.com:443/workflows/ec127cc8f156442398c
 
 BLOB_ACCOUNT = "https://sarc769media.blob.core.windows.net";
 
-$('#MovieIcon').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
-  $.getJSON(RAI, function( data ) {
-    var items = [];
-    $.each( data, function( key, val ) {
-      items.push( "<hr />");
-      items.push("<img src='"+BLOB_ACCOUNT + val["iconPath"] +"' width='200pc'/> <br />")
-      items.push( "<hr />");
-      items.push(val["videoName"] + "<br />");
-      items.push("Uploaded by: " + val["userID"]+"<br />");
-      items.push("<a href= '"+BLOB_ACCOUNT + val["videoPath"] +"'>Watch Here </a> <br />")
+
+function GetVideos(){
+  $('#MovieIcon').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+    $.getJSON(RAI, function( data ) {
+      var items = [];
+      $.each( data, function( key, val ) {
+        items.push( "<hr />");
+        items.push("<img src='"+BLOB_ACCOUNT + val["iconPath"] +"' width='200pc'/> <br />")
+        items.push( "<hr />");
+        items.push(val["videoName"] + "<br />");
+        items.push("Uploaded by: " + val["userID"]+"<br />");
+        items.push("<a href= '"+BLOB_ACCOUNT + val["videoPath"] +"'>Watch Here </a> <br />")
+      });
+
+      $('#MovieIcon').empty();
+      //Append the contents of the items array to the ImageList Div
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "#MovieIcon" );
+
     });
-
-    $('#MovieIcon').empty();
-    //Append the contents of the items array to the ImageList Div
-    $( "<ul/>", {
-      "class": "my-new-list",
-      html: items.join( "" )
-    }).appendTo( "#MovieIcon" );
-
-  });
+  };
 
 
  function UploadVideo(){
