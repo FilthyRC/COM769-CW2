@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myflix</title>
-
+    <script type="text/javascript" src="../JS/bootstrap.js"></script>
+    <script type="text/javascript" src="../JS/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../JS/app.js"></script>
 </head>
 <body onload="GetVideos()">
     <div>
         <a href="#">Home</a>
     </div>
 
-    <div id="MovieIcon"></div>
+    <div style="width: 100%; overflow: hidden;">
+        <div id="MovieIcon" style="width: 600px; float: left;"></div>
 
-    <script type="text/javascript" src="../JS/bootstrap.js"></script>
-    <script type="text/javascript" src="../JS/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../JS/app.js"></script>
+
+   <script>
+        $(document).ready(function(){
+            $('#MovieIcon').on('click', '.video',function(event){ 
+            var videoID = $(this).data('video-id');
+            var docID = $(this).data('doc-id')
+            window.location.href = 'video.html?videoID=' + encodeURIComponent(videoID) + '&docID=' + encodeURIComponent(docID);
+            });
+        });
+   </script>
+
+
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../JS/bootstrap.js"></script>
+    <script type="text/javascript" src="../JS/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../JS/app.js"></script>
+</head>
+<body>
+    <h1>Watch Video</h1>
+    <div id="video-player">
+        <video id="video" controls></video>
+    </div>
+    <div id="comment-section">
+        <div id="comments"></div>
+        <div id="new-comment">
+            <textarea name="comment-box" id="comment-box" style="width: 500px;"></textarea>
+            <button id="uploadComment" style="width: 75px; height: 20px;">Post</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function getQueryParams() {
+                var params = {};
+                var queryString = window.location.search.substring(1);
+                var queries = queryString.split("&");
+
+                queries.forEach(function(query) {
+                    var pair = query.split("=");
+                    params[pair[0]] = decodeURIComponent(pair[1]);
+                });
+                console.log(params)
+                return params;
+            }
+
+            get_comments()
+            var params = getQueryParams();
+            var videoID = params.videoID;
+            var docID = params.docID;
+            console.log(docID)
+            $('#video').attr('src','https://sarc769media.blob.core.windows.net' + videoID);
+        
+            $('#uploadComment').click(function(){
+                var comment = $('#comment-box').val();
+                if (docID){
+                    var dataToUpload = {
+                        ID: docID,
+                        newComment: comment
+                    };
+                $.ajax({
+                    url: 'https://prod-27.uksouth.logic.azure.com:443/workflows/fa37abd9c5e04a52872137a64f6b0243/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=DF9Oxc-OHO3LWqLWmRNCSp1tdFURAVX01pl_U9Iy_-Q',
+                    type: 'POST',
+                    data: JSON.stringify(dataToUpload),
+                    contentType: 'application/json',
+                    success: function(response){
+                        console.log('Data uploaded successfully:', response); }
+                    });
+                $('#comment-box').val('');
+
+             }});
+
+             function get_comments(){
+                $.getJSON(RAI = "https://prod-25.uksouth.logic.azure.com:443/workflows/ec127cc8f156442398c8c50cb1299492/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=cgab8EXxlt-7okMwfSI4zzq-GKOnxEenJugpJQvZn_w", function( data ) {
+                    var items = [];
+                    var comments = $('#comments')
+                    comments.empty()
+                    $.each( data, function( key, val ) {
+                        if(val["id"]===docID){
+                            items.push(val["comments"]);
+                        }
+
+                    });
+                    console.log(items.length, items[0].length,items)
+                        for(var i = 0; i<items[0].length;i++){
+                            comments.append($("<li>" + items[0][i] + "</li>"))
+    
+                        }
+                    })
+                }
+            })
+
+            
+
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 IUPS = "https://prod-19.uksouth.logic.azure.com:443/workflows/63ea88979d4a42b68830cced4904c46f/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=v3F6wBhQAIiiqVr8ZEuxhnMV6IxJTkesXugB1DqFcnE";
 RAI = "https://prod-25.uksouth.logic.azure.com:443/workflows/ec127cc8f156442398c8c50cb1299492/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=cgab8EXxlt-7okMwfSI4zzq-GKOnxEenJugpJQvZn_w";
-
+comment_link = "https://prod-12.uksouth.logic.azure.com:443/workflows/7249053156894855a3aaafe78da6ef41/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=wTJJK3_m51m667d8oRkyUo6pj06sr5tVgg5ckycAKuA"
 BLOB_ACCOUNT = "https://sarc769media.blob.core.windows.net";
 
 
@@ -15,7 +15,7 @@ function GetVideos(){
         items.push( "<hr />");
         items.push(val["videoName"] + "<br />");
         items.push("Uploaded by: " + val["userID"]+"<br />");
-        items.push("<a href= '"+BLOB_ACCOUNT + val["videoPath"] +"'>Watch Here </a> <br />")
+        items.push("<a href= '#' data-video-id='" + val["videoPath"] +"' data-doc-id='" + val["id"] +"' class='video'>Watch Here </a> <br />")
       });
 
       $('#MovieIcon').empty();
@@ -28,7 +28,6 @@ function GetVideos(){
     });
   };
 
-
  function UploadVideo(){
     submitData = new FormData();
 
@@ -37,8 +36,6 @@ function GetVideos(){
     submitData.append('Video', $("#UpVideo")[0].files[0]);
     submitData.append('Icon', $("#UpIcon")[0].files[0]);
     
-    
-   console.log(submitData)
     $.ajax({
       url: IUPS,
       data: submitData,
@@ -51,5 +48,9 @@ function GetVideos(){
         alert("Upload Complete!");
     }
   })
-
   };
+
+  function Get_Comments(){
+
+  }
+
