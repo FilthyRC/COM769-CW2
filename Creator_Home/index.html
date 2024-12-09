@@ -17,5 +17,15 @@
     <script type="text/javascript" src="../JS/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../JS/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../JS/app.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#MovieIcon').on('click', '.video',function(event){ 
+            var videoID = $(this).data('video-id');
+            var docID = $(this).data('doc-id')
+            window.location.href = '../video.html?videoID=' + encodeURIComponent(videoID) + '&docID=' + encodeURIComponent(docID);
+            });
+        });
+   </script>
 </body>
 </html>

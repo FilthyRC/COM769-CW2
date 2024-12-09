@@ -11,7 +11,7 @@ function GetVideos(){
       var items = [];
       $.each( data, function( key, val ) {
         items.push( "<hr />");
-        items.push("<img src='"+BLOB_ACCOUNT + val["iconPath"] +"' width='200pc'/> <br />")
+        items.push("<img src='"+BLOB_ACCOUNT + val["iconPath"] +"' width='500px'/> <br />")
         items.push( "<hr />");
         items.push(val["videoName"] + "<br />");
         items.push("Uploaded by: " + val["userID"]+"<br />");

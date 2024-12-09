@@ -14,6 +14,7 @@
         <video id="video" controls></video>
     </div>
     <div id="comment-section">
+        <h3>Comments</h3>
         <div id="comments"></div>
         <div id="new-comment">
             <textarea name="comment-box" id="comment-box" style="width: 500px;"></textarea>
@@ -50,13 +51,16 @@
                         ID: docID,
                         newComment: comment
                     };
+
                 $.ajax({
                     url: 'https://prod-27.uksouth.logic.azure.com:443/workflows/fa37abd9c5e04a52872137a64f6b0243/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=DF9Oxc-OHO3LWqLWmRNCSp1tdFURAVX01pl_U9Iy_-Q',
                     type: 'POST',
                     data: JSON.stringify(dataToUpload),
                     contentType: 'application/json',
                     success: function(response){
-                        console.log('Data uploaded successfully:', response); }
+                        console.log('Data uploaded successfully:', response); 
+                        $('#comments').append("<li>" + comment)
+                        }
                     });
                 $('#comment-box').val('');
 
